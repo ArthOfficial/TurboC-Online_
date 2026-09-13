@@ -1,0 +1,32 @@
+{
+  "name": "Turbo C++ Online — Run Turbo C in Browser",
+  "short_name": "Turbo C++",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0c0e11",
+  "theme_color": "#0c0e11",
+  "description": "Run Borland Turbo C & Turbo C++ 3.2 directly in your browser without installation. Fast, 100% ad-free, with live code paste and file import. Maintained by Arth.",
+  "categories": ["education", "developer", "utilities", "productivity"],
+  "icons": [
+    {
+      "src": "./favicon.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./logo.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0c0e11">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c0e11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#0c0e11">
+<meta name="msapplication-TileColor" content="#0c0e11">
+<title>Turbo C++ Keyboard Shortcuts Cheat Sheet</title>
+<link rel="canonical" href="https://turbocplus.vercel.app/shortcuts.html">
+<meta name="google-site-verification" content="3VJeWn8B2jeHvA9OYtUfYEMOQBW8CKq6eqN-B4abCis">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="./favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon.png">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="apple-touch-icon" href="./favicon.png">
+
+<meta name="title" content="Turbo C++ Keyboard Shortcuts Cheat Sheet">
+<meta name="description" content="Complete keyboard shortcuts guide for Borland Turbo C++ 3.2. Reference for F1-F10 keys, Ctrl+F9 compile, Alt+F5 user screen, and live code paste.">
+<meta name="keywords" content="turbo c shortcuts, turboc shortcuts, turbo c++ keyboard shortcuts, turbo c plus online, turbo-c, online-c, online c compiler, online c++ compiler, turbo c compile shortcut, turbo c run key, alt f5 user screen, turbo c cheat sheet, borland turbo c shortcuts, turboc commands">
+<meta name="author" content="Arth">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="revisit-after" content="1 days">
+<meta name="distribution" content="global">
+<meta name="rating" content="general">
+
+<!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Turbo C++ Online">
+<meta property="og:title" content="Turbo C++ Keyboard Shortcuts Cheat Sheet">
+<meta property="og:description" content="Complete shortcuts guide for Turbo C++ 3.2: F1-F10 keys, Ctrl+F9 compile, Alt+F5 user screen, and fast code paste.">
+<meta property="og:url" content="https://turbocplus.vercel.app/shortcuts.html">
+<meta property="og:logo" content="https://turbocplus.vercel.app/logo.png">
+<meta property="og:image" content="https://turbocplus.vercel.app/screenshots/shortcuts-reference.png">
+<meta property="og:image:secure_url" content="https://turbocplus.vercel.app/screenshots/shortcuts-reference.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Turbo C++ Keyboard Shortcuts Reference Cheat Sheet">
+
+<!-- Twitter / X Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ArthOfficial">
+<meta name="twitter:creator" content="@ArthOfficial">
+<meta name="twitter:title" content="Turbo C++ Keyboard Shortcuts Cheat Sheet">
+<meta name="twitter:description" content="Complete shortcuts guide for Turbo C++ 3.2: F1-F10 keys, Ctrl+F9 compile, Alt+F5 user screen, and fast code paste.">
+<meta name="twitter:image" content="https://turbocplus.vercel.app/screenshots/shortcuts-reference.png">
+<meta name="twitter:image:alt" content="Turbo C++ Keyboard Shortcuts Cheat Sheet">
+
+<style>
+  :root {
+    --bg-main: #0c0e11;
+    --bg-surface: #14171b;
+    --bg-surface-elevated: #1a1e23;
+    --bg-surface-hover: #21262d;
+    --border-subtle: #242930;
+    --border-strong: #333a43;
+    --border-focus: #4b5563;
+    
+    --text-primary: #f0f3f6;
+    --text-secondary: #8d96a0;
+    --text-muted: #565f6c;
+    
+    --accent: #2d68c4;
+    --accent-hover: #3b7fd9;
+    --success: #2ea043;
+    
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-full: 999px;
+    
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    padding-bottom: 90px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .app-layout {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 32px 20px 90px;
+  }
+
+  .app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .brand-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .brand-symbol {
+    width: 36px;
+    height: 36px;
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .brand-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .brand-status {
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .header-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    padding: 3px 4px;
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-surface-elevated);
+  }
+
+  .nav-link.active {
+    color: var(--text-primary);
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .btn-primary {
+    background-color: var(--accent);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    padding: 6px 14px;
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--accent-hover);
+  }
+
+  .page-intro {
+    margin-bottom: 28px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(45, 104, 196, 0.12);
+    border: 1px solid rgba(45, 104, 196, 0.3);
+    color: #60a5fa;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .page-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .page-desc {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 720px;
+  }
+
+  .shortcuts-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 22px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+  }
+
+  .section-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .shortcuts-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .shortcuts-table th {
+    text-align: left;
+    padding: 9px 12px;
+    color: var(--text-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .shortcuts-table td {
+    padding: 11px 12px;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+  }
+
+  .shortcuts-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .key-badge {
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .arth-watermark-dock {
+    position: fixed;
+    bottom: 18px;
+    right: 20px;
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #121519;
+    border: 1px solid #282f38;
+    border-radius: var(--radius-full);
+    padding: 6px 14px;
+    font-size: 11.5px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+    user-select: none;
+    transition: all 0.2s ease;
+  }
+
+  .watermark-label {
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .author-name {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <div class="app-layout">
+    <header class="app-header">
+      <a href="index.html" class="brand-area">
+        <div class="brand-symbol" title="Turbo C++ Online">
+          <svg class="brand-logo-icon" width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="tcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3b82f6" />
+                <stop offset="50%" stop-color="#60a5fa" />
+                <stop offset="100%" stop-color="#2563eb" />
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="28" height="28" rx="6.5" fill="#14171b" stroke="#333a43" stroke-width="1.5" />
+            <path d="M7 9.5h8M11 9.5v13" stroke="url(#tcGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M23 13.5a4 4 0 0 0-4-3.5 4.5 4.5 0 0 0-4.5 4.5v3a4.5 4.5 0 0 0 4.5 4.5 4 4 0 0 0 4-3.5" stroke="#93c5fd" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M24.5 9v3M23 10.5h3" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" />
+            <path d="M28.5 9v3M27 10.5h3" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Turbo C++ Online</span>
+          <span class="brand-status">Shortcuts Cheat Sheet</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <nav class="header-nav">
+          <a href="index.html" class="nav-link">IDE</a>
+          <a href="shortcuts.html" class="nav-link active">Shortcuts</a>
+          <a href="faq.html" class="nav-link">FAQ</a>
+          <a href="docs.html" class="nav-link">Docs</a>
+        </nav>
+
+        <a href="index.html" class="btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <span>Open Compiler</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <div class="page-intro">
+        <div class="badge">Reference Guide</div>
+        <h1 class="page-title">Turbo C++ Keyboard Shortcuts &amp; Commands</h1>
+        <p class="page-desc">
+          Master the authentic Borland Turbo C++ 3.2 IDE keyboard navigation. In Turbo C++, nearly every operation can be performed faster with function keys and modifier combinations.
+        </p>
+      </div>
+
+      <!-- General & IDE Shortcuts -->
+      <div class="shortcuts-card">
+        <h2 class="section-title">Essential Compiler &amp; Editor Keys</h2>
+        <table class="shortcuts-table">
+          <thead>
+            <tr>
+              <th>Shortcut</th>
+              <th>Action</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="key-badge">Shift + Insert</span> / <span class="key-badge">Ctrl + Shift + V</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Live Code Insertion</td>
+              <td>Opens the external code paste window to inject source code directly into Turbo C++ in 0.3s.</td>
+            </tr>
+            <tr>
+              <td><span class="key-badge">F3</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Open File</td>
+              <td>Prompts the File Open dialog to open any <code style="font-family: var(--font-mono);">.CPP</code> or <code style="font-family: var(--font-mono);">.C</code> file.</td>
+            </tr>
+            <tr>
+              <td><span class="key-badge">F2</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Save File</td>
+              <td>Saves the currently active file buffer to disk.</td>
+            </tr>
+            <tr>
+              <td><span class="key-badge">F5</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Zoom / Maximize Window</td>
+              <td>Toggles active editor window between half-screen tile and full-screen workspace.</td>
+            </tr>
+            <tr>
+              <td><span class="key-badge">Ctrl + F9</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Compile &amp; Run</td>
+              <td>Compiles, links, and immediately executes your program in the DOSBox environment.</td>
+            </tr>
+            <tr>
+              <td><span class="key-badge">Alt + F5</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">User Screen</td>
+              <td>Switches to the DOS output window so you can inspect program results. Press any key to return.</td>
+            </tr>
+            <tr>
+              <td><span class="key-badge">Alt + F9</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Compile Only</td>
+              <td>Checks syntax and generates <code style="font-family: var(--font-mono);">.OBJ</code> file without executing.</td>
+            </tr>
+            <tr>
+              <td><span class="key-badge">F9</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Make Project</td>
+              <td>Builds the project and links the executable.</td>
+            </tr>
+            <tr>
+              <td><span class="key-badge">Alt + X</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Exit Turbo C++</td>
+              <td>Gracefully quits the Turbo C++ IDE.</td>
+            </tr>
+            <tr>
+              <td><span class="key-badge">F11</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Toggle Fullscreen</td>
+              <td>Enters or exits immersive Full Big fullscreen mode with crisp pixel scaling.</td>
+            </tr>
+            <tr>
+              <td><span class="key-badge">Esc</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Dismiss / Exit Fullscreen</td>
+              <td>Closes any open modal/dialog or exits fullscreen mode to return to standard view.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Debugging & Navigation Shortcuts -->
+      <div class="shortcuts-card">
+        <h2 class="section-title">Debugging &amp; Window Management</h2>
+        <table class="shortcuts-table">
+          <thead>
+            <tr>
+              <th>Shortcut</th>
+              <th>Action</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="key-badge">F7</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Trace Into</td>
+              <td>Executes code line-by-line, stepping into user-defined functions.</td>
+            </tr>
+            <tr>
+              <td><span class="key-badge">F8</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Step Over</td>
+              <td>Executes code line-by-line, stepping over function calls without entering them.</td>
+            </tr>
+            <tr>
+              <td><span class="key-badge">Ctrl + F2</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Program Reset</td>
+              <td>Terminates the active debugging session and frees memory.</td>
+            </tr>
+            <tr>
+              <td><span class="key-badge">Ctrl + F4</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Evaluate / Modify</td>
+              <td>Inspects variable values or calculates expressions during debugging.</td>
+            </tr>
+            <tr>
+              <td><span class="key-badge">F6</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Next Window</td>
+              <td>Cycles active focus to the next open editor window.</td>
+            </tr>
+            <tr>
+              <td><span class="key-badge">Alt + F3</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Close Window</td>
+              <td>Closes the active editor window.</td>
+            </tr>
+            <tr>
+              <td><span class="key-badge">F5</span></td>
+              <td style="color: var(--text-primary); font-weight: 500;">Zoom Window</td>
+              <td>Maximizes or restores the active editor window size.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <div id="arth-attribution-mark" class="arth-watermark-dock">
+    <span class="watermark-label">Made by</span>
+    <span class="author-name">Arth</span>
+  </div>
+</body>
+</html>
+

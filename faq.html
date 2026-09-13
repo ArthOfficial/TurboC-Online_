@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0c0e11">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c0e11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#0c0e11">
+<meta name="msapplication-TileColor" content="#0c0e11">
+<title>Turbo C++ Online FAQ &amp; Troubleshooting Guide</title>
+<link rel="canonical" href="https://turbocplus.vercel.app/faq.html">
+<meta name="google-site-verification" content="3VJeWn8B2jeHvA9OYtUfYEMOQBW8CKq6eqN-B4abCis">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="./favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon.png">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="apple-touch-icon" href="./favicon.png">
+
+<meta name="title" content="Turbo C++ Online FAQ &amp; Troubleshooting Guide">
+<meta name="description" content="Frequently asked questions and troubleshooting guide for Borland Turbo C++ 3.2. Learn code paste, conio.h, user screen, and graphics.h fixes.">
+<meta name="keywords" content="turbo c faq, turbo c copy paste, turbo c conio.h, turbo c graphics.h, turbo c plus online, turbo-c, online-c, online c compiler, online c++ compiler, turbo c screen closing, turbo c user screen, turbo c windows 11, turbo c help, borland turbo c troubleshooting">
+<meta name="author" content="Arth">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="revisit-after" content="1 days">
+<meta name="distribution" content="global">
+<meta name="rating" content="general">
+
+<!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Turbo C++ Online">
+<meta property="og:title" content="Turbo C++ Online FAQ &amp; Troubleshooting Guide">
+<meta property="og:description" content="Frequently asked questions and answers for Turbo C++ 3.2 Online. Copy-pasting, conio.h, graphics.h, and shortcuts.">
+<meta property="og:url" content="https://turbocplus.vercel.app/faq.html">
+<meta property="og:logo" content="https://turbocplus.vercel.app/logo.png">
+<meta property="og:image" content="https://turbocplus.vercel.app/screenshots/faq-page.png">
+<meta property="og:image:secure_url" content="https://turbocplus.vercel.app/screenshots/faq-page.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Turbo C++ Online FAQ &amp; Troubleshooting Guide">
+
+<!-- Twitter / X Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ArthOfficial">
+<meta name="twitter:creator" content="@ArthOfficial">
+<meta name="twitter:title" content="Turbo C++ Online FAQ &amp; Troubleshooting Guide">
+<meta name="twitter:description" content="Frequently asked questions and answers for Turbo C++ 3.2 Online. Copy-pasting, conio.h, graphics.h, and shortcuts.">
+<meta name="twitter:image" content="https://turbocplus.vercel.app/screenshots/faq-page.png">
+<meta name="twitter:image:alt" content="Turbo C++ Online FAQ &amp; Troubleshooting Guide">
+
+<style>
+  :root {
+    --bg-main: #0c0e11;
+    --bg-surface: #14171b;
+    --bg-surface-elevated: #1a1e23;
+    --bg-surface-hover: #21262d;
+    --border-subtle: #242930;
+    --border-strong: #333a43;
+    --border-focus: #4b5563;
+    
+    --text-primary: #f0f3f6;
+    --text-secondary: #8d96a0;
+    --text-muted: #565f6c;
+    
+    --accent: #2d68c4;
+    --accent-hover: #3b7fd9;
+    --success: #2ea043;
+    
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-full: 999px;
+    
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    padding-bottom: 90px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .app-layout {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 32px 20px 90px;
+  }
+
+  .app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .brand-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .brand-symbol {
+    width: 36px;
+    height: 36px;
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .brand-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .brand-status {
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .header-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    padding: 3px 4px;
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-surface-elevated);
+  }
+
+  .nav-link.active {
+    color: var(--text-primary);
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .btn-primary {
+    background-color: var(--accent);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    padding: 6px 14px;
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--accent-hover);
+  }
+
+  .page-intro {
+    margin-bottom: 28px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(45, 104, 196, 0.12);
+    border: 1px solid rgba(45, 104, 196, 0.3);
+    color: #60a5fa;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .page-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .page-desc {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 720px;
+  }
+
+  .faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-item {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+
+  .faq-item[open] {
+    border-color: var(--border-strong);
+  }
+
+  .faq-question {
+    padding: 16px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question::after {
+    content: "+";
+    font-size: 18px;
+    color: var(--text-muted);
+    font-weight: 400;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-item[open] .faq-question::after {
+    content: "−";
+    color: #60a5fa;
+  }
+
+  .faq-answer {
+    padding: 0 20px 18px 20px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    border-top: 1px solid var(--border-subtle);
+    margin-top: 4px;
+    padding-top: 14px;
+  }
+
+  .faq-answer code {
+    font-family: var(--font-mono);
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+  }
+
+  .arth-watermark-dock {
+    position: fixed;
+    bottom: 18px;
+    right: 20px;
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #121519;
+    border: 1px solid #282f38;
+    border-radius: var(--radius-full);
+    padding: 6px 14px;
+    font-size: 11.5px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+    user-select: none;
+    transition: all 0.2s ease;
+  }
+
+  .watermark-label {
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .author-name {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <div class="app-layout">
+    <header class="app-header">
+      <a href="index.html" class="brand-area">
+        <div class="brand-symbol" title="Turbo C++ Online">
+          <svg class="brand-logo-icon" width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="tcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3b82f6" />
+                <stop offset="50%" stop-color="#60a5fa" />
+                <stop offset="100%" stop-color="#2563eb" />
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="28" height="28" rx="6.5" fill="#14171b" stroke="#333a43" stroke-width="1.5" />
+            <path d="M7 9.5h8M11 9.5v13" stroke="url(#tcGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M23 13.5a4 4 0 0 0-4-3.5 4.5 4.5 0 0 0-4.5 4.5v3a4.5 4.5 0 0 0 4.5 4.5 4 4 0 0 0 4-3.5" stroke="#93c5fd" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M24.5 9v3M23 10.5h3" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" />
+            <path d="M28.5 9v3M27 10.5h3" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Turbo C++ Online</span>
+          <span class="brand-status">Help &amp; FAQ</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <nav class="header-nav">
+          <a href="index.html" class="nav-link">IDE</a>
+          <a href="shortcuts.html" class="nav-link">Shortcuts</a>
+          <a href="faq.html" class="nav-link active">FAQ</a>
+          <a href="docs.html" class="nav-link">Docs</a>
+        </nav>
+
+        <a href="index.html" class="btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <span>Open Compiler</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <div class="page-intro">
+        <div class="badge">Support &amp; Troubleshooting</div>
+        <h1 class="page-title">Frequently Asked Questions (FAQ)</h1>
+        <p class="page-desc">
+          Everything you need to know about running, compiling, debugging, and troubleshooting C and C++ programs in Turbo C++ Online.
+        </p>
+      </div>
+
+      <div class="faq-container">
+        <details class="faq-item" open>
+          <summary class="faq-question">How do I copy and paste code into Turbo C++ Online?</summary>
+          <div class="faq-answer">
+            Click the <strong>Paste Code</strong> button in the top navigation bar or press <code>Shift + Insert</code> (or <code>Ctrl + Shift + V</code>). Paste or write your source code in the dialog, specify your target filename (default: <code>CODE.CPP</code>), and click <strong>Insert into Turbo C++</strong>. Your code is written directly to the virtual DOS filesystem in <code>TURBOC3/BIN/</code> and automatically opened in Turbo C++ in 0.3 seconds with 100% exact indentation.
+          </div>
+        </details>
+
+        <details class="faq-item" open>
+          <summary class="faq-question">Why does my program close immediately after running, and how do I view output?</summary>
+          <div class="faq-answer">
+            After compiling and running with <code>Ctrl + F9</code>, Turbo C++ automatically returns to the code editor once the program finishes. You can view the output screen at any time by pressing <code>Alt + F5</code> (User Screen). To keep the output window open automatically until a key is pressed, include <code>&lt;conio.h&gt;</code> and add <code>getch();</code> right before <code>return 0;</code> in your <code>main()</code> function.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Can I compile and run programs using conio.h and graphics.h?</summary>
+          <div class="faq-answer">
+            Yes! This emulator runs authentic Borland Turbo C++ 3.2 on DOSBox. Legacy functions like <code>clrscr()</code>, <code>getch()</code>, and <code>gotoxy()</code> from <code>conio.h</code> work perfectly. BGI graphics programs using <code>initgraph()</code> and functions like <code>line()</code>, <code>circle()</code>, and <code>outtextxy()</code> also run properly inside the DOSBox canvas.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">How can I import my own C/C++ files from my computer?</summary>
+          <div class="faq-answer">
+            You can import files in two ways:
+            <br>1. Click the <strong>Import (.CPP)</strong> button in the top bar to choose a file from your hard drive.
+            <br>2. Drag and drop any <code>.cpp</code>, <code>.c</code>, or <code>.h</code> file directly onto the Launch Card or the Code Insertion modal.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">How does Turbo C++ Online differ from installing Turbo C++ on Windows 11 or 10?</summary>
+          <div class="faq-answer">
+            Borland Turbo C++ 3.2 is an original 16-bit MS-DOS application that cannot run natively on modern 64-bit editions of Windows 11 or 10. Local installations typically bundle modified, outdated DOSBox wrappers that often trigger antivirus false positives, mount path conflicts, or display scaling issues. <strong>Turbo C++ Online</strong> runs entirely inside your browser via WebAssembly DOSBox, requiring zero installation, zero admin permissions, and zero software downloads.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Is Turbo C++ Online free, and does it have ads?</summary>
+          <div class="faq-answer">
+            Turbo C++ Online is 100% free, non-commercial, and completely ad-free. It does not contain banner advertisements, sponsor redirects, or video popups. It is maintained by Arth for students, programmers, and retro enthusiasts worldwide.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Does this work on Mac, Linux, and Chromebooks?</summary>
+          <div class="faq-answer">
+            Yes. Since the emulator runs via WebAssembly directly inside modern web browsers (Chrome, Firefox, Safari, Edge), Turbo C++ Online works seamlessly on macOS, Linux, ChromeOS, and even modern mobile devices.
+          </div>
+        </details>
+      </div>
+    </main>
+  </div>
+
+  <div id="arth-attribution-mark" class="arth-watermark-dock">
+    <span class="watermark-label">Made by</span>
+    <span class="author-name">Arth</span>
+  </div>
+</body>
+</html>
+

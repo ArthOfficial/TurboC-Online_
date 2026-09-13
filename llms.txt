@@ -1,0 +1,39 @@
+# Turbo C++ Online (TC / Turbo C Plush)
+
+> Free, in-browser Borland Turbo C++ 3.2 compiler and IDE powered by WebAssembly DOSBox. Zero installation required. 100% ad-free.
+
+- **Website**: https://turbocplus.vercel.app/
+- **Author**: Arth (https://github.com/ArthOfficial)
+- **Primary Keywords**: turbo c, turboc, turboc++, turbo c plus, turbo c plus online, turbo c plush, turbo-c, turbo-c online, online-c, online c compiler, online c++ compiler, online c ide, turbo c online, turbo c compiler, run turbo c in browser, c compiler online, tc online, turboc3 online
+- **Pages**:
+  - Compiler IDE: https://turbocplus.vercel.app/
+  - Shortcuts Cheat-sheet: https://turbocplus.vercel.app/shortcuts.html
+  - Frequently Asked Questions: https://turbocplus.vercel.app/faq.html
+  - Documentation & DOS API: https://turbocplus.vercel.app/docs.html
+
+## Overview
+Turbo C++ Online provides a browser-based emulation of Borland Turbo C++ 3.2 running on DOSBox via JS-DOS and WebAssembly. It enables students, educators, and retro computing enthusiasts to write, compile, debug, and run C and C++ programs directly within any modern web browser without downloading 16-bit emulation software or dealing with OS incompatibilities on modern 64-bit systems like Windows 10, Windows 11, macOS, and Linux.
+
+## Core Capabilities
+- **Instant Live Code Injection**: Inject external C/C++ source code directly into `TURBOC3/BIN/CODE.CPP` within 0.3 seconds using direct virtual filesystem manipulation, avoiding keyboard buffer loss.
+- **Native File Import**: Drag and drop or upload local `.CPP`, `.C`, `.H`, or `.TXT` files from the host operating system.
+- **Full DOS & C++ Support**: Complete support for standard Turbo C++ libraries including `iostream.h`, `stdio.h`, `conio.h` (`clrscr()`, `getch()`), and `graphics.h` (EGA/VGA modes).
+- **Unrestricted Pointer Navigation**: Standard mouse capture is disabled so users can seamlessly switch between the IDE menus and other application windows.
+- **100% Ad-Free**: No third-party advertisements, tracking scripts, or promotional popups.
+
+## Keyboard Shortcuts
+- `Shift + Insert` or `Ctrl + Shift + V`: Open Code Insertion / Paste Modal
+- `F3`: Open file dialog inside Turbo C++
+- `F2`: Save current file
+- `Ctrl + F9`: Compile and Run program
+- `Alt + F5`: Switch to DOS User Screen to view output
+- `Alt + X`: Exit Turbo C++
+- `F7` / `F8`: Step trace / Step over
+- `Alt + F9`: Compile source without running
+
+## Technical Specifications
+- Emulation Core: JS-DOS 8.4.1 (WebAssembly DOSBox)
+- Default Target: 16-bit Real Mode x86
+- Standard Architecture: C++ by default (.CPP), with full backwards C compatibility (.C)
+- Host Requirements: Any modern browser with WebAssembly support (Chrome, Firefox, Edge, Safari)
+

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0c0e11">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c0e11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#0c0e11">
+<meta name="msapplication-TileColor" content="#0c0e11">
+<title>Turbo C++ Online Documentation &amp; Guide</title>
+<link rel="canonical" href="https://turbocplus.vercel.app/docs.html">
+<meta name="google-site-verification" content="3VJeWn8B2jeHvA9OYtUfYEMOQBW8CKq6eqN-B4abCis">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="./favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon.png">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="apple-touch-icon" href="./favicon.png">
+
+<meta name="title" content="Turbo C++ Online Documentation &amp; Guide">
+<meta name="description" content="Technical documentation and guide for Turbo C++ Online. Learn WebAssembly DOSBox emulation, virtual filesystem injection, and library support.">
+<meta name="keywords" content="turbo c documentation, turbo c++ manual, turbo c online guide, turbo c plus online, turbo-c, online-c, online c compiler, online c++ compiler, borland turbo c 3.2 architecture, dosbox webassembly c++, turbo c dos api, borland compiler guide">
+<meta name="author" content="Arth">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="revisit-after" content="1 days">
+<meta name="distribution" content="global">
+<meta name="rating" content="general">
+
+<!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Turbo C++ Online">
+<meta property="og:title" content="Turbo C++ Online Documentation &amp; Guide">
+<meta property="og:description" content="Technical documentation and guide for Turbo C++ Online. WebAssembly DOSBox emulation and filesystem injection.">
+<meta property="og:url" content="https://turbocplus.vercel.app/docs.html">
+<meta property="og:logo" content="https://turbocplus.vercel.app/logo.png">
+<meta property="og:image" content="https://turbocplus.vercel.app/screenshots/code-injection-modal.png">
+<meta property="og:image:secure_url" content="https://turbocplus.vercel.app/screenshots/code-injection-modal.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Turbo C++ Online Documentation &amp; Guide">
+
+<!-- Twitter / X Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ArthOfficial">
+<meta name="twitter:creator" content="@ArthOfficial">
+<meta name="twitter:title" content="Turbo C++ Online Documentation &amp; Guide">
+<meta name="twitter:description" content="Technical documentation and guide for Turbo C++ Online. WebAssembly DOSBox emulation and filesystem injection.">
+<meta name="twitter:image" content="https://turbocplus.vercel.app/screenshots/code-injection-modal.png">
+<meta name="twitter:image:alt" content="Turbo C++ Online Documentation Guide">
+
+<style>
+  :root {
+    --bg-main: #0c0e11;
+    --bg-surface: #14171b;
+    --bg-surface-elevated: #1a1e23;
+    --bg-surface-hover: #21262d;
+    --border-subtle: #242930;
+    --border-strong: #333a43;
+    --border-focus: #4b5563;
+    
+    --text-primary: #f0f3f6;
+    --text-secondary: #8d96a0;
+    --text-muted: #565f6c;
+    
+    --accent: #2d68c4;
+    --accent-hover: #3b7fd9;
+    --success: #2ea043;
+    
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-full: 999px;
+    
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    padding-bottom: 90px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .app-layout {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 32px 20px 90px;
+  }
+
+  .app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .brand-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .brand-symbol {
+    width: 36px;
+    height: 36px;
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .brand-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .brand-status {
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .header-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    padding: 3px 4px;
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-surface-elevated);
+  }
+
+  .nav-link.active {
+    color: var(--text-primary);
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .btn-primary {
+    background-color: var(--accent);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    padding: 6px 14px;
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--accent-hover);
+  }
+
+  .page-intro {
+    margin-bottom: 28px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(45, 104, 196, 0.12);
+    border: 1px solid rgba(45, 104, 196, 0.3);
+    color: #60a5fa;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: var(--radius-full);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .page-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .page-desc {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 720px;
+  }
+
+  .doc-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 22px;
+    margin-bottom: 20px;
+  }
+
+  .doc-card h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+
+  .doc-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 12px;
+  }
+
+  .doc-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .code-block {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: #93c5fd;
+    line-height: 1.5;
+    overflow-x: auto;
+    white-space: pre;
+    margin: 12px 0;
+  }
+
+  .features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin-top: 14px;
+  }
+
+  .feature-item {
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+  }
+
+  .feature-item h3 {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .feature-item p {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .arth-watermark-dock {
+    position: fixed;
+    bottom: 18px;
+    right: 20px;
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #121519;
+    border: 1px solid #282f38;
+    border-radius: var(--radius-full);
+    padding: 6px 14px;
+    font-size: 11.5px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+    user-select: none;
+    transition: all 0.2s ease;
+  }
+
+  .watermark-label {
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .author-name {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <div class="app-layout">
+    <header class="app-header">
+      <a href="index.html" class="brand-area">
+        <div class="brand-symbol" title="Turbo C++ Online">
+          <svg class="brand-logo-icon" width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="tcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3b82f6" />
+                <stop offset="50%" stop-color="#60a5fa" />
+                <stop offset="100%" stop-color="#2563eb" />
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="28" height="28" rx="6.5" fill="#14171b" stroke="#333a43" stroke-width="1.5" />
+            <path d="M7 9.5h8M11 9.5v13" stroke="url(#tcGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M23 13.5a4 4 0 0 0-4-3.5 4.5 4.5 0 0 0-4.5 4.5v3a4.5 4.5 0 0 0 4.5 4.5 4 4 0 0 0 4-3.5" stroke="#93c5fd" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M24.5 9v3M23 10.5h3" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" />
+            <path d="M28.5 9v3M27 10.5h3" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Turbo C++ Online</span>
+          <span class="brand-status">Documentation</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <nav class="header-nav">
+          <a href="index.html" class="nav-link">IDE</a>
+          <a href="shortcuts.html" class="nav-link">Shortcuts</a>
+          <a href="faq.html" class="nav-link">FAQ</a>
+          <a href="docs.html" class="nav-link active">Docs</a>
+        </nav>
+
+        <a href="index.html" class="btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <span>Open Compiler</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <div class="page-intro">
+        <div class="badge">Architecture &amp; Manual</div>
+        <h1 class="page-title">Turbo C++ Online Documentation</h1>
+        <p class="page-desc">
+          Technical specifications, virtual filesystem mechanics, supported DOS libraries, and compiler guides for Borland Turbo C++ 3.2 in the browser.
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h2>Emulation Core &amp; WebAssembly Runtime</h2>
+        <p>
+          Turbo C++ Online runs an authentic Borland Turbo C++ 3.2 installation compiled to run on an x86 real-mode DOS environment. Emulation is executed via <strong>JS-DOS 8.4.1</strong> and <strong>DOSBox</strong> compiled directly to WebAssembly (Wasm).
+        </p>
+        <p>
+          All execution happens strictly client-side within your browser sandbox. No source code or program data is transmitted to external servers, providing privacy, low latency, and zero dependency on server-side compilers.
+        </p>
+
+        <div class="features-list">
+          <div class="feature-item">
+            <h3>x86 Real-Mode Emulation</h3>
+            <p>Runs genuine 16-bit Borland C/C++ compiler toolchain (TCC, TLINK, TASM).</p>
+          </div>
+          <div class="feature-item">
+            <h3>Direct FS Injection</h3>
+            <p>Code is written into the virtual DOS filesystem in 0.3s without typing delays.</p>
+          </div>
+          <div class="feature-item">
+            <h3>VGA/EGA Graphics</h3>
+            <p>Full 320x200 and 640x480 resolution canvas with BGI graphics driver support.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <h2>Standard Library Support</h2>
+        <p>Turbo C++ 3.2 comes with standard headers located in <code>INCLUDE/</code>:</p>
+        <p>
+          • <strong><code>iostream.h</code> / <code>fstream.h</code></strong>: C++ streams (<code>cout</code>, <code>cin</code>, <code>endl</code>).<br>
+          • <strong><code>conio.h</code></strong>: Console I/O functions including <code>clrscr()</code>, <code>getch()</code>, <code>getche()</code>, <code>wherex()</code>, <code>wherey()</code>.<br>
+          • <strong><code>graphics.h</code></strong>: Borland Graphics Interface (BGI) functions (<code>initgraph()</code>, <code>circle()</code>, <code>line()</code>, <code>closegraph()</code>).<br>
+          • <strong><code>stdio.h</code> / <code>stdlib.h</code></strong>: Standard C library (<code>printf()</code>, <code>scanf()</code>, <code>malloc()</code>, <code>free()</code>).<br>
+          • <strong><code>dos.h</code> / <code>bios.h</code></strong>: Low-level DOS and BIOS interrupts (<code>delay()</code>, <code>sound()</code>, <code>nosound()</code>).
+        </p>
+      </div>
+
+      <div class="doc-card">
+        <h2>Sample Starter Programs</h2>
+        <p><strong>1. Classic C++ Program with Conio:</strong></p>
+        <div class="code-block">#include &lt;iostream.h&gt;
+#include &lt;conio.h&gt;
+
+void main() {
+    clrscr();
+    cout &lt;&lt; "Hello from Turbo C++ Online!" &lt;&lt; endl;
+    cout &lt;&lt; "Press any key to return to editor...";
+    getch();
+}</div>
+
+        <p><strong>2. EGA/VGA Graphics Demo:</strong></p>
+        <div class="code-block">#include &lt;graphics.h&gt;
+#include &lt;conio.h&gt;
+
+void main() {
+    int gd = DETECT, gm;
+    initgraph(&amp;gd, &amp;gm, "C:\\TURBOC3\\BGI");
+    
+    circle(320, 240, 100);
+    outtextxy(260, 235, "Turbo C++ BGI");
+    
+    getch();
+    closegraph();
+}</div>
+      </div>
+    </main>
+  </div>
+
+  <div id="arth-attribution-mark" class="arth-watermark-dock">
+    <span class="watermark-label">Made by</span>
+    <span class="author-name">Arth</span>
+  </div>
+</body>
+</html>
+

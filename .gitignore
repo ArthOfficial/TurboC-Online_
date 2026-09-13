@@ -1,0 +1,26 @@
+# Dependencies & Build Artifacts
+node_modules/
+.vercel
+.turbo
+.npm
+package-lock.json
+
+# Archives & Backups
+*.zip
+*.tar.gz
+*.rar
+*.bak
+
+# Unused Legacy Assets & Scratch
+icon-1-*.png
+scratch_*
+scratch/
+
+# Operating System & Editor Metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+.jules/
+.vscode/
+.idea/

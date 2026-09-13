@@ -1,0 +1,36 @@
+# robots.txt for Turbo C++ Online (https://turbocplus.vercel.app/)
+# Maintained by Arth
+
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /shortcuts.html
+Allow: /faq.html
+Allow: /docs.html
+Allow: /turboc.jsdos
+Allow: /manifest.json
+Allow: /favicon.svg
+
+# AI Search Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Sitemaps
+Sitemap: https://turbocplus.vercel.app/sitemap.xml
+Sitemap: https://turbocplus.vercel.app/crawl.xml
+
