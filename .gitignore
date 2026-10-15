@@ -4,6 +4,9 @@ node_modules/
 .turbo
 .npm
 package-lock.json
+.env
+.env.*
+!.env.example
 
 # Archives & Backups
 *.zip

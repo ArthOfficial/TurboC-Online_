@@ -305,24 +305,31 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background-color: #121519;
-    border: 1px solid #282f38;
+    background-color: #17243a;
+    border: 1px solid #49638e;
     border-radius: var(--radius-full);
-    padding: 6px 14px;
-    font-size: 11.5px;
+    padding: 8px 16px;
+    font-size: 13px;
+    text-decoration: none;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
     user-select: none;
     transition: all 0.2s ease;
   }
 
   .watermark-label {
-    color: var(--text-muted);
+    color: #c0cede;
     font-weight: 400;
   }
 
   .author-name {
-    color: var(--text-primary);
-    font-weight: 600;
+    color: #93c5fd;
+    font-weight: 700;
+  }
+
+  .arth-watermark-dock:hover,
+  .arth-watermark-dock:focus-visible {
+    outline: 2px solid #93c5fd;
+    outline-offset: 3px;
   }
 </style>
 </head>
@@ -388,6 +395,11 @@
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td><span class="key-badge">Ctrl + V</span> / <span class="key-badge">Cmd + V</span> (Mac)</td>
+              <td style="color: var(--text-primary); font-weight: 500;">Paste at Cursor</td>
+              <td>Click inside an open file to paste code at the cursor or replace selected text, keeping multiline indentation. Press F2 to save.</td>
+            </tr>
             <tr>
               <td><span class="key-badge">Shift + Insert</span> / <span class="key-badge">Ctrl + Shift + V</span></td>
               <td style="color: var(--text-primary); font-weight: 500;">Live Code Insertion</td>
@@ -500,10 +512,10 @@
     </main>
   </div>
 
-  <div id="arth-attribution-mark" class="arth-watermark-dock">
+  <a id="arth-attribution-mark" class="arth-watermark-dock" href="https://github.com/ArthOfficial" target="_blank" rel="noopener noreferrer" aria-label="Made by ArthOfficial — visit GitHub profile">
     <span class="watermark-label">Made by</span>
-    <span class="author-name">Arth</span>
-  </div>
+    <span class="author-name">ArthOfficial ↗</span>
+  </a>
 </body>
 </html>
 

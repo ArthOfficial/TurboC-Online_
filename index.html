@@ -139,7 +139,7 @@
           "name": "How do I copy and paste code into Turbo C++ Online?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Click the Paste Code button in the header or press Shift+Insert (or Ctrl+Shift+V). Type or paste your C++ code into the editor, specify the target DOS filename (default CODE.CPP), and click 'Insert into Turbo C++'. Your code will be written directly to the virtual DOS filesystem and loaded in 0.3 seconds."
+            "text": "Click inside an open Turbo C++ file and press Ctrl+V (Cmd+V on Mac) to paste at the cursor or replace selected text, keeping indentation. Press F2 to save. To load a separate file, click Paste Code or press Shift+Insert (or Ctrl+Shift+V), enter a filename, and click Insert into Turbo C++. The popup keeps an already-open file in its current editor buffer."
           }
         },
         {
@@ -1114,7 +1114,7 @@
     border: 1px solid var(--border-subtle);
   }
 
-  /* Arth Watermark Dock (FileManager-Local Exact Style: Made by Arth) */
+  /* Creator credit */
   .arth-watermark-dock {
     position: fixed;
     bottom: 18px;
@@ -1123,29 +1123,33 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background-color: #121519;
-    border: 1px solid #282f38;
+    background-color: #17243a;
+    border: 1px solid #49638e;
     border-radius: var(--radius-full);
-    padding: 6px 14px;
-    font-size: 11.5px;
+    padding: 8px 16px;
+    font-size: 13px;
+    text-decoration: none;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
     user-select: none;
     transition: all 0.2s ease;
   }
 
-  .arth-watermark-dock:hover {
-    border-color: #3b4450;
-    background-color: #161a20;
+  .arth-watermark-dock:hover,
+  .arth-watermark-dock:focus-visible {
+    border-color: #93c5fd;
+    background-color: #203351;
+    outline: 2px solid #93c5fd;
+    outline-offset: 3px;
   }
 
   .watermark-label {
-    color: var(--text-muted);
+    color: #c0cede;
     font-weight: 400;
   }
 
   .author-name {
-    color: var(--text-primary);
-    font-weight: 600;
+    color: #93c5fd;
+    font-weight: 700;
   }
 
   @media (max-width: 640px) {
@@ -1159,8 +1163,8 @@
     .arth-watermark-dock {
       right: 12px;
       bottom: 12px;
-      padding: 4px 10px;
-      font-size: 10px;
+      padding: 7px 12px;
+      font-size: 12px;
     }
   }
 
@@ -1362,6 +1366,7 @@
     padding-top: 12px;
   }
 </style>
+<link rel="stylesheet" href="program-library.css">
 </head>
 <body>
   <div class="app-layout">
@@ -1444,6 +1449,27 @@
 
     <!-- Main Workspace -->
     <main class="main-content">
+      <aside class="program-sidebar" aria-label="Program library">
+        <div class="library-heading"><h2>Programs</h2><button type="button" class="library-small-btn" id="btn-new-program">+ New file</button></div>
+        <p class="library-intro">Choose a program. Make it yours.</p>
+        <label class="library-search-label" for="program-search">Find a program</label>
+        <input type="search" id="program-search" class="library-search" placeholder="Search programs…">
+        <h3 class="library-section-label">Examples <span id="example-count"></span></h3>
+        <div id="example-programs" class="program-list"></div>
+        <h3 class="library-section-label">Published by ArthOfficial</h3>
+        <div id="saved-programs" class="program-list"></div>
+        <p id="library-status" class="library-note" role="status">Loading saved programs…</p>
+        <section id="working-programs-section" hidden>
+          <h3 class="library-section-label">Working files · this session</h3>
+          <div id="working-programs" class="program-list"></div>
+        </section>
+        <div class="library-owner-actions">
+          <button type="button" class="action-btn" id="btn-owner-login">Owner sign in</button>
+          <button type="button" class="action-btn" id="btn-save-program" hidden>+ Publish program</button>
+          <button type="button" class="library-small-btn" id="btn-owner-logout" hidden>Sign out</button>
+        </div>
+      </aside>
+      <div class="workspace-editor">
       <!-- Launch Dropzone Card Section -->
       <section class="dropzone-section" id="start-section">
         <div class="dropzone-card" id="start-btn" tabindex="0" role="button" aria-label="Launch Turbo C++">
@@ -1588,21 +1614,68 @@ int main() {
             <span><strong style="color: var(--text-secondary);">Alt+X</strong> Exit</span>
           </div>
           <div style="color: var(--text-secondary);">
-            Tip: Press <code style="background: var(--bg-surface-elevated); padding: 2px 5px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: var(--text-primary); font-family: var(--font-mono);">Shift+Insert</code> to insert external code
+            Tip: Click inside your file and press <code style="background: var(--bg-surface-elevated); padding: 2px 5px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: var(--text-primary); font-family: var(--font-mono);">Ctrl+V</code> to paste at the cursor. Use Paste Code to load a file.
           </div>
         </div>
       </section>
+      </div>
     </main>
   </div>
 
   <!-- Hidden Native File Input for Import -->
   <input type="file" id="file-importer" accept=".cpp,.c,.cc,.cxx,.h,.hpp,.txt" style="display: none;">
 
-  <!-- Right-Hand Watermark / Author Attribution Tag (Exact FileManager-Local Style: Made by Arth) -->
-  <div id="arth-attribution-mark" class="arth-watermark-dock">
+  <dialog id="owner-dialog" class="library-dialog">
+    <form id="owner-form" class="library-form">
+      <div class="library-dialog-heading"><h2>Owner sign in</h2><button type="button" data-close-dialog class="library-close" aria-label="Close owner sign in">×</button></div>
+      <p>Only ArthOfficial can publish, edit, or delete programs. Everyone can open them.</p>
+      <label for="owner-password">Owner password</label>
+      <input id="owner-password" type="password" autocomplete="current-password" required maxlength="1024">
+      <p id="owner-message" class="library-message" role="status"></p>
+      <p><a href="docs.html#cloud-library">Cloud library setup guide</a></p>
+      <button type="submit" class="btn-primary" id="owner-submit">Sign in</button>
+    </form>
+  </dialog>
+  <dialog id="program-dialog" class="library-dialog library-program-dialog">
+    <form id="program-form" class="library-form">
+      <div class="library-dialog-heading"><h2 id="program-dialog-title">Publish program</h2><button type="button" data-close-dialog class="library-close" aria-label="Close program editor">×</button></div>
+      <p>Published programs are visible to everyone. Save changes in Turbo C++ with F2 before reading a file here.</p>
+      <label for="program-title">Program name</label>
+      <input id="program-title" required maxlength="80" placeholder="e.g. Matrix multiplication">
+      <label for="program-filename">DOS filename</label>
+      <input id="program-filename" required maxlength="12" pattern="[A-Za-z0-9_]{1,8}\.(CPP|cpp|C|c|H|h|HPP|hpp)" value="PROGRAM.CPP" spellcheck="false">
+      <div class="library-import-actions"><button type="button" class="action-btn" id="btn-read-dos-file">Read saved Turbo C++ file</button><label class="action-btn" for="program-upload">Upload source file</label><input type="file" id="program-upload" accept=".cpp,.c,.h,.hpp" hidden></div>
+      <label for="program-code">Source code</label>
+      <textarea id="program-code" rows="14" spellcheck="false" required></textarea>
+      <p id="program-message" class="library-message" role="status"></p>
+      <button type="submit" class="btn-primary" id="program-submit">Publish program</button>
+    </form>
+  </dialog>
+  <dialog id="delete-program-dialog" class="library-dialog">
+    <form id="delete-program-form" class="library-form">
+      <h2>Delete published program?</h2>
+      <p id="delete-program-description"></p>
+      <p>This removes it from the website. Existing working copies in Turbo C++ stay open.</p>
+      <p id="delete-program-message" class="library-message" role="status"></p>
+      <div class="library-import-actions"><button type="button" data-close-dialog class="btn-secondary">Cancel</button><button type="submit" class="btn-primary library-danger">Delete program</button></div>
+    </form>
+  </dialog>
+  <dialog id="new-program-dialog" class="library-dialog">
+    <form id="new-program-form" class="library-form">
+      <div class="library-dialog-heading"><h2>New working file</h2><button type="button" data-close-dialog class="library-close" aria-label="Close new file">×</button></div>
+      <p>Create a file for this session. Publishing to the website is available to the owner.</p>
+      <label for="new-program-filename">DOS filename</label>
+      <input id="new-program-filename" required maxlength="12" pattern="[A-Za-z0-9_]{1,8}\.(CPP|cpp|C|c)" value="NEW.CPP" spellcheck="false">
+      <p id="new-program-message" class="library-message" role="status"></p>
+      <button type="submit" class="btn-primary">Create file</button>
+    </form>
+  </dialog>
+
+  <!-- Creator credit -->
+  <a id="arth-attribution-mark" class="arth-watermark-dock" href="https://github.com/ArthOfficial" target="_blank" rel="noopener noreferrer" aria-label="Made by ArthOfficial — visit GitHub profile">
     <span class="watermark-label">Made by</span>
-    <span class="author-name">Arth</span>
-  </div>
+    <span class="author-name">ArthOfficial ↗</span>
+  </a>
 
   <!-- Clear old js-dos cache once -->
   <script>
@@ -1638,8 +1711,15 @@ int main() {
       const target = e.target;
       if (!target) return;
       const tag = target.tagName ? target.tagName.toUpperCase() : "";
-      if (tag === "TEXTAREA" || tag === "INPUT" || tag === "SELECT" || target.isContentEditable || (target.closest && (target.closest(".modal-backdrop") || target.closest(".modal-dialog")))) {
+      if (tag === "TEXTAREA" || tag === "INPUT" || tag === "SELECT" || target.isContentEditable || (target.closest && (target.closest(".modal-backdrop") || target.closest(".modal-dialog") || target.closest(".library-dialog")))) {
         e.stopImmediatePropagation();
+        return;
+      }
+      if (dosCi && dosBox.contains(target) && (editorPasteInProgress ||
+          ((e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === "v"))) {
+        // Keep Ctrl+V out of DOS (it toggles overwrite), but allow the browser paste event.
+        e.stopImmediatePropagation();
+        if (editorPasteInProgress) e.preventDefault();
       }
     }, true);
   });
@@ -1677,10 +1757,13 @@ int main() {
   let dosInstance = null;
   let dosCi = null;
   let toastTimer = null;
+  let editorPasteInProgress = false;
+  let bootPromise = null;
+  let activeFilename = "FIBO.CPP";
 
   // DOS Key Constants
   const KBD = {
-    ENTER: 257, TAB: 258, BACKSPACE: 259, SPACE: 32, ESC: 256,
+    ENTER: 257, TAB: 258, BACKSPACE: 259, DELETE: 261, SPACE: 32, ESC: 256,
     LSHIFT: 340, RSHIFT: 344, LCTRL: 341, RCTRL: 345, LALT: 342, RALT: 346,
     F1: 290, F2: 291, F3: 292, F4: 293, F5: 294,
     F6: 295, F7: 296, F8: 297, F9: 298, F10: 299,
@@ -1765,6 +1848,67 @@ int main() {
     }
   }
 
+  async function pressDosCtrlKey(keyCode) {
+    dosCi.sendKeyEvent(KBD.LCTRL, true);
+    try {
+      await pressDosKey(keyCode, false, 25, 40);
+    } finally {
+      dosCi.sendKeyEvent(KBD.LCTRL, false);
+    }
+  }
+
+  // Read a temporary block into the live buffer; never rewrite or reopen the working file.
+  async function pasteIntoEditor(text) {
+    if (editorPasteInProgress) return;
+    if (typeof dosCi.fsWriteFile !== "function") {
+      showToast("Virtual filesystem write unavailable.", "error", "Paste Failed");
+      return;
+    }
+    editorPasteInProgress = true;
+    const filename = Date.now().toString(16).slice(-8).toUpperCase() + ".TMP";
+    try {
+      clearKeyMatrix();
+      const code = text.replace(/\r\n|\r|\n/g, "\r\n");
+      await dosCi.fsWriteFile(filename, new TextEncoder().encode(code));
+      dosBox.focus();
+      await pressDosCtrlKey(KBD.DELETE); // Edit > Clear: replace a visible selection, if any
+      await pressDosCtrlKey(75); // Ctrl+K, R: Read block at cursor
+      await pressDosKey(82, false, 25, 180);
+      for (const char of "C:\\" + filename) {
+        for (const key of charToDosKeys(char) || []) {
+          await pressDosKey(key.keyCode, key.shift);
+        }
+      }
+      await pressDosKey(KBD.ENTER, false, 25, 180);
+      await pressDosCtrlKey(81); // Ctrl+Q, K: Move to the end of the inserted block
+      await pressDosKey(75);
+      await pressDosCtrlKey(75); // Ctrl+K, H: Hide the block highlight
+      await pressDosKey(72);
+      showToast("Pasted at the cursor. Press F2 to save.", "success", "Code Pasted");
+    } catch (err) {
+      console.error("Error pasting into the editor:", err);
+      showToast("Paste failed: " + err.message, "error", "Paste Failed");
+    } finally {
+      clearKeyMatrix();
+      try {
+        if (typeof dosCi.fsDeleteFile === "function") await dosCi.fsDeleteFile(filename);
+      } catch (err) {
+        console.warn("Could not remove temporary paste file:", err);
+      }
+      editorPasteInProgress = false;
+    }
+  }
+
+  window.addEventListener("paste", (e) => {
+    if (!dosCi || !dosBox.contains(e.target) || pasteModal.classList.contains("visible")) return;
+    if (e.target.closest("input, textarea, select, [contenteditable]")) return;
+    const text = e.clipboardData && e.clipboardData.getData("text/plain");
+    if (!text) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    pasteIntoEditor(text);
+  }, true);
+
   // Show enhanced toast notification (FileManager-Local Style)
   function showToast(message, type = "info", title = "Turbo C++", duration = 3800) {
     if (!toast || !toastMsg) return;
@@ -1846,20 +1990,51 @@ int main() {
   }
 
   // Start Emulator
+  async function waitForInitialEditor() {
+    const deadline = Date.now() + 20000;
+    let readyFrames = 0;
+    while (Date.now() < deadline) {
+      const running = typeof dosCi.getRunningProgram !== "function" || /^TC(?:\.EXE)?$/i.test(await dosCi.getRunningProgram());
+      const frame = await dosCi.screenshot();
+      let editorBorder = false;
+      // DOS reports TC running before its desktop loads. Wait for the first editor's white border.
+      for (let y = Math.floor(frame.height / 25); y < frame.height * 3 / 25 && !editorBorder; y++) {
+        let run = 0;
+        for (let x = 10; x < frame.width - 10; x++) {
+          const pixel = (y * frame.width + x) * 4;
+          run = frame.data[pixel] > 150 && frame.data[pixel + 1] > 150 && frame.data[pixel + 2] > 150 ? run + 1 : 0;
+          if (run > frame.width / 4) { editorBorder = true; break; }
+        }
+      }
+      readyFrames = running && editorBorder ? readyFrames + 1 : 0;
+      if (readyFrames >= 3) return;
+      await delay(100);
+    }
+    throw new Error("The editor did not finish starting. Please reload and try again.");
+  }
+
   function bootEmulator() {
-    if (dosInstance) return; // already started or starting
+    if (bootPromise) return bootPromise;
+    let finishBoot;
+    bootPromise = new Promise(resolve => { finishBoot = resolve; });
     if (startSection) startSection.style.display = "none";
     if (emulatorSection) emulatorSection.style.display = "block";
     if (dosBox) dosBox.style.display = "block";
+    dosBox.inert = true;
     updateStatus("booting", "Booting Turbo C++ 3.2...");
 
-    try {
+    (async () => {
+      const starter = await fetch("programs/starter-files.bin");
+      if (!starter.ok) throw new Error("Could not load starter programs.");
+      const starterBundle = new Uint8Array(await starter.arrayBuffer());
       dosInstance = Dos(dosBox, {
         url: "turboc.jsdos",
+        pathPrefix: "https://cdn.jsdelivr.net/npm/emulators@8.4.1/dist/",
+        // A second ZIP applies after the main bundle is extracted, including startup configuration.
+        initFs: starterBundle,
         autoStart: true,
         mouseCapture: false, // Disables pointer lock so mouse cursor is never trapped
-        onEvent: (event, payload) => {
-          console.log("[js-dos event]", event, payload);
+        onEvent: async (event, payload) => {
           if (event === "fullscreen-change") {
             const isFs = !!payload;
             document.body.classList.toggle("is-fullscreen", isFs);
@@ -1876,23 +2051,34 @@ int main() {
             if (dosInstance && typeof dosInstance.setMouseCapture === "function") {
               dosInstance.setMouseCapture(false);
             }
-            updateStatus("online", "Turbo C++ 3.2 Online");
-            showToast("Turbo C++ loaded! Click Paste Code anytime.", "success", "Turbo C++ Ready", 4000);
-
-            // Automatically zoom/maximize the editor window to fill the entire screen (Borland F5)
-            setTimeout(async () => {
-              if (dosCi) {
-                await pressDosKey(KBD.F5, false, 25, 50);
-              }
-            }, 2000);
+            try {
+              await waitForInitialEditor();
+              await pressDosKey(KBD.ESC, false, 25, 100);
+              dosBox.inert = false;
+              updateStatus("online", "Turbo C++ 3.2 Online");
+              showToast("Fibonacci is ready. Choose any program on the left.", "success", "Turbo C++ Ready", 4000);
+              finishBoot(dosCi);
+              window.dispatchEvent(new CustomEvent("turbo-file-opened", { detail: { filename: activeFilename } }));
+            } catch (error) {
+              dosBox.inert = false;
+              updateStatus("error", "Startup failed");
+              showToast(error.message, "error", "Startup Error");
+              finishBoot(null);
+            }
           }
         }
       });
-    } catch (err) {
+    })().catch(err => {
       console.error("Error starting js-dos:", err);
       updateStatus("error", "Failed to load");
       showToast("Failed to initialize emulator. Check console.", "error", "Emulator Error", 5000);
-    }
+      finishBoot(null);
+      dosBox.inert = false;
+      bootPromise = null;
+      dosInstance = null;
+      if (startSection) startSection.style.display = "block";
+    });
+    return bootPromise;
   }
 
   if (startBtn) {
@@ -2304,22 +2490,9 @@ int main() {
     });
   }
 
-  // LIVE INSERTION INTO TURBO C++ (Instant, 100% exact formatting, opens in 0.3s)
-  if (btnPasteAndOpen) {
-    btnPasteAndOpen.addEventListener("click", async () => {
-      if (!dosCi) {
-        showToast("Please launch Turbo C++ first!", "error", "Emulator Offline");
-        return;
-      }
-
-      const code = pasteCodeInput.value;
-      if (!code || !code.trim()) {
-        showToast("Please paste, write, or import some code first!", "error", "Empty Code");
-        pasteCodeInput.focus();
-        return;
-      }
-
-      const dosFilename = getSanitizedFilename(injectFilenameInput.value);
+  async function openDosFile(code, dosFilename, writeFile = true) {
+      if (editorPasteInProgress) return false;
+      editorPasteInProgress = true;
       const fullPath = "TURBOC3/BIN/" + dosFilename;
 
       try {
@@ -2327,9 +2500,9 @@ int main() {
         const uint8 = encoder.encode(code);
 
         if (typeof dosCi.fsWriteFile === "function") {
-          await dosCi.fsWriteFile(fullPath, uint8);
+          if (writeFile) await dosCi.fsWriteFile(fullPath, uint8);
           closePasteModal();
-          showToast(`Writing ${dosFilename} into Turbo C++...`, "info", "Live Inject", 2000);
+          showToast(`Opening ${dosFilename} in Turbo C++...`, "info", "Open File", 2000);
 
           dosBox.focus();
           clearKeyMatrix();
@@ -2362,14 +2535,65 @@ int main() {
           clearKeyMatrix();
 
           showToast(`Loaded ${dosFilename} live into Turbo C++!`, "success", "Live Loaded", 4000);
+          activeFilename = dosFilename;
+          window.dispatchEvent(new CustomEvent("turbo-file-opened", { detail: { filename: dosFilename } }));
+          return true;
         } else {
           showToast("Virtual filesystem write unavailable.", "error", "Filesystem Error");
         }
       } catch (err) {
         console.error("Error inserting code into Turbo C++:", err);
         showToast("Insertion failed: " + err.message, "error", "Error");
+      } finally {
+        editorPasteInProgress = false;
       }
+      return false;
+  }
+
+  if (btnPasteAndOpen) {
+    btnPasteAndOpen.addEventListener("click", async () => {
+      if (!dosCi) { showToast("Please launch Turbo C++ first!", "error", "Emulator Offline"); return; }
+      const code = pasteCodeInput.value;
+      if (!code || !code.trim()) {
+        showToast("Please paste, write, or import some code first!", "error", "Empty Code");
+        pasteCodeInput.focus();
+        return;
+      }
+      if (!await bootPromise) return;
+      await openDosFile(code, getSanitizedFilename(injectFilenameInput.value));
     });
+  }
+
+  window.TurboWorkspace = {
+    get filename() { return activeFilename; },
+    async openFile(program, create = false) {
+      if (!/^[A-Z0-9_]{1,8}\.(CPP|C|H|HPP)$/.test(program.filename)) throw new Error("Invalid DOS filename.");
+      if (/^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])\./.test(program.filename)) throw new Error("Choose a filename that is not a reserved DOS device name.");
+      if (!await bootEmulator()) throw new Error("Turbo C++ is not ready. Please try again.");
+      if (typeof dosCi.getRunningProgram === "function" && !/^TC(?:\.EXE)?$/i.test(await dosCi.getRunningProgram())) {
+        throw new Error("Return to the Turbo C++ editor before opening another program.");
+      }
+      const exists = await savedFileExists(program.filename);
+      if (create && exists) throw new Error("This file already exists in Turbo C++. Choose another filename.");
+      // Library navigation reuses the saved working copy; only a new file needs source written.
+      if (!await openDosFile(program.code, program.filename, !exists)) throw new Error("The editor is busy or this file could not be opened. Please try again.");
+    },
+    async readFile(filename) {
+      if (!/^[A-Z0-9_]{1,8}\.(CPP|C|H|HPP)$/.test(filename)) throw new Error("Enter a valid DOS filename first.");
+      if (!dosCi) throw new Error("Open Turbo C++ and save your file with F2 first.");
+      if (editorPasteInProgress) throw new Error("The editor is busy. Please try again.");
+      if (!await savedFileExists(filename)) throw new Error("This file has not been saved in Turbo C++. Press F2 to save it first.");
+      return new TextDecoder().decode(await dosCi.fsReadFile("TURBOC3/BIN/" + filename));
+    }
+  };
+
+  async function savedFileExists(filename) {
+    let node = await dosCi.fsTree();
+    for (const name of ["TURBOC3", "BIN", filename]) {
+      node = (node.nodes || []).find(entry => entry.name.toUpperCase() === name);
+      if (!node) return false;
+    }
+    return node.size !== null;
   }
 
   // Service Worker Registration
@@ -2385,6 +2609,7 @@ int main() {
   }
   })();
   </script>
+  <script src="program-library.js" defer></script>
 </body>
 </html>
 

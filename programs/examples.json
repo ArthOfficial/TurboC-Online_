@@ -1,0 +1,38 @@
+[
+  {
+    "id": "builtin-fibonacci",
+    "title": "Fibonacci Series",
+    "filename": "FIBO.CPP",
+    "code": "#include <iostream.h>\n#include <conio.h>\n\nint main()\n{\n    clrscr();\n    int n;\n    unsigned long first = 0, second = 1, next;\n    cout << \"How many terms (1-24)? \";\n    cin >> n;\n    if (n < 1 || n > 24)\n        cout << \"Please enter a number from 1 to 24.\";\n    else\n        for (int i = 0; i < n; i++)\n        {\n            cout << first << \" \";\n            next = first + second;\n            first = second;\n            second = next;\n        }\n    getch();\n    return 0;\n}\n"
+  },
+  {
+    "id": "builtin-factorial",
+    "title": "Factorial",
+    "filename": "FACT.CPP",
+    "code": "#include <iostream.h>\n#include <conio.h>\n\nint main()\n{\n    clrscr();\n    int n;\n    unsigned long result = 1;\n    cout << \"Enter a number (0-12): \";\n    cin >> n;\n    if (n < 0 || n > 12)\n        cout << \"Please enter a number from 0 to 12.\";\n    else\n    {\n        for (int i = 2; i <= n; i++)\n            result *= i;\n        cout << \"Factorial = \" << result;\n    }\n    getch();\n    return 0;\n}\n"
+  },
+  {
+    "id": "builtin-prime",
+    "title": "Prime Number",
+    "filename": "PRIME.CPP",
+    "code": "#include <iostream.h>\n#include <conio.h>\n\nint main()\n{\n    clrscr();\n    int n, prime = 1;\n    cout << \"Enter a number (1-32767): \";\n    cin >> n;\n    if (n < 2)\n        prime = 0;\n    for (int i = 2; prime && i <= n / i; i++)\n        if (n % i == 0)\n            prime = 0;\n    if (prime)\n        cout << \"Prime number\";\n    else\n        cout << \"Not a prime number\";\n    getch();\n    return 0;\n}\n"
+  },
+  {
+    "id": "builtin-palindrome",
+    "title": "Palindrome",
+    "filename": "PALIN.CPP",
+    "code": "#include <iostream.h>\n#include <conio.h>\n#include <string.h>\n\nint main()\n{\n    clrscr();\n    char word[80];\n    int palindrome = 1;\n    cout << \"Enter a word (up to 79 letters): \";\n    cin.width(80);\n    cin >> word;\n    int length = strlen(word);\n    for (int i = 0; i < length / 2; i++)\n        if (word[i] != word[length - i - 1])\n            palindrome = 0;\n    if (palindrome)\n        cout << \"Palindrome\";\n    else\n        cout << \"Not a palindrome\";\n    getch();\n    return 0;\n}\n"
+  },
+  {
+    "id": "builtin-sort",
+    "title": "Bubble Sort",
+    "filename": "SORT.CPP",
+    "code": "#include <iostream.h>\n#include <conio.h>\n\nint main()\n{\n    clrscr();\n    int values[5] = {64, 25, 12, 22, 11};\n    for (int i = 0; i < 4; i++)\n        for (int j = 0; j < 4 - i; j++)\n            if (values[j] > values[j + 1])\n            {\n                int temp = values[j];\n                values[j] = values[j + 1];\n                values[j + 1] = temp;\n            }\n    cout << \"Sorted numbers: \";\n    for (int k = 0; k < 5; k++)\n        cout << values[k] << \" \";\n    getch();\n    return 0;\n}\n"
+  },
+  {
+    "id": "builtin-hello",
+    "title": "Hello World",
+    "filename": "HELLO.CPP",
+    "code": "#include <iostream.h>\n#include <conio.h>\n\nint main()\n{\n    clrscr();\n    cout << \"Hello, World!\" << endl;\n    cout << \"Welcome to Turbo C++ Online.\";\n    getch();\n    return 0;\n}\n"
+  }
+]

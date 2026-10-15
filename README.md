@@ -51,6 +51,7 @@
 - 🔤 **C++ by Default (`.CPP`)**: Defaults to `.CPP` file extensions and includes a clean modern C++ starter template.
 - 🖱️ **Unrestricted Mouse Navigation**: Pointer lock is disabled, allowing free mouse movement between Turbo C++ top menus (`File`, `Edit`, `Compile`, `Run`) and other browser windows.
 - 📋 **Universal Shortcuts**: Press `Shift+Insert` or `Ctrl+Shift+V` anywhere on the page to immediately open the code insertion modal.
+- ✏️ **Paste into the Active File**: Click inside an open editor and press `Ctrl+V` (`Cmd+V` on Mac) to insert code at the cursor or replace selected text with indentation preserved. Press `F2` to save. The file popup keeps its existing behavior for files that are already open.
 - 🛡️ **Completely Ad-Free**: Zero banner ads, zero popups, zero popunders, and zero third-party tracking scripts.
 - 📱 **Progressive Web App (PWA)**: Installable on desktop and mobile with offline caching via Service Worker.
 - 🤖 **AI Search & Semantic Web**: Includes `robots.txt`, `llms.txt`, `ai.md`, and rich JSON-LD `FAQPage` + `WebApplication` schemas.
@@ -90,6 +91,7 @@ Open `http://localhost:8080` in your browser.
 
 | Shortcut | Action |
 |---|---|
+| `Ctrl + V` / `Cmd + V` (Mac) | Paste at the cursor in the active file |
 | `Shift + Insert` / `Ctrl + Shift + V` | Open Paste & Live Code Insertion Modal |
 | `F3` | Open file in Turbo C++ |
 | `F2` | Save current file in Turbo C++ |
@@ -101,6 +103,26 @@ Open `http://localhost:8080` in your browser.
 | `Esc` | Close dialog or exit Fullscreen |
 
 ---
+
+## Browser Regression Check
+
+Run `npm test` for server authorization and storage tests. With Playwright and its Chromium browser installed, run `npm run test:browser`. Each browser test starts its own local server. Tests cover direct paste, unchanged same-name popup behavior, the program sidebar, real Turbo C++ compilation, owner management, and mobile layout. Browser cloud tests use isolated in-memory storage; they do not verify a live Vercel Blob account.
+
+## Program Library & Owner Setup
+
+The left panel contains six built-in programs. Everyone can open examples and published programs, and create working files for their current emulator session. Only the owner can publish, edit, or delete cloud programs. To publish an edited DOS file, press **F2** in Turbo C++, then choose **Publish program → Read saved filename** and review the source before publishing. Built-ins are read-only library entries; publish an edited copy under a different DOS filename.
+
+Reopening a file from the sidebar keeps its existing working copy in Turbo C++, including saved edits. A published update does not overwrite work already open in the current session.
+
+The cloud library uses **private Vercel Blob file storage** and a Vercel Function. No database server or Google Drive connection is required. Reads through `/api/library` are public. Writes require a server-verified password and a signed HttpOnly session cookie. Failed sign-ins are limited to eight attempts per IP per 15 minutes with counters persisted in the private store.
+
+1. In the existing Vercel project, open **Storage → Create Database → Blob**, choose **Private**, and connect it to the project. Vercel provides `BLOB_READ_WRITE_TOKEN` as a server environment variable. See [Vercel's private storage guide](https://vercel.com/docs/vercel-blob/private-storage).
+2. Run `npm install`, then `npm run admin:password` in a local interactive terminal. Choose a password of at least 16 characters. Add the generated `ADMIN_PASSWORD_HASH` to the Vercel project's server environment variables for the desired deployments. Keep both environment variables private.
+3. Deploy the updated project on Vercel, then use **Owner sign in** on the website. Upload or paste source, publish it, edit it, or confirm deletion by name. No password or token needs to be pasted into chat or committed to Git.
+
+Unconfigured static previews still have working built-in examples, new session files, and pasting; cloud publishing remains disabled. Blob storage is subject to the connected Vercel account's quotas and billing. There is no simulated cloud persistence fallback.
+
+The emulator starts with `FIBO.CPP` selected. Its startup overlay is `programs/starter-files.bin` (ZIP format). After changing `programs/examples.json` or `programs/startup.conf`, rebuild it with `python scripts/build-starter-files.py` and bump the service-worker cache version before deploying. The main `turboc.jsdos` archive remains unchanged.
 
 ## 📄 License & Credits
 

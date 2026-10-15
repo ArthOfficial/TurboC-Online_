@@ -1,0 +1,45 @@
+[hidden] { display: none !important; }
+.app-layout { max-width: 1120px; }
+.main-content { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px; align-items: start; }
+.workspace-editor { min-width: 0; }
+.program-sidebar { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 16px 12px; }
+.library-heading, .library-dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.library-heading h2 { font-size: 14px; font-weight: 600; }
+.library-intro, .library-note { color: var(--text-secondary); font-size: 11px; line-height: 1.6; margin: 10px 0; }
+.library-section-label { display: flex; justify-content: space-between; color: var(--text-muted); font: 10px var(--font-mono); text-transform: uppercase; letter-spacing: .07em; margin: 22px 0 9px; }
+.library-search-label { display: block; color: var(--text-secondary); font-size: 11px; margin: 18px 0 5px; }
+.library-search { width: 100%; min-width: 0; background: var(--bg-main); border: 1px solid var(--border-subtle); border-radius: 4px; padding: 8px; color: var(--text-primary); font: 12px var(--font-sans); }
+.program-list { display: flex; flex-direction: column; gap: 3px; }
+.program-row { border-radius: 4px; border: 1px solid transparent; }
+.program-row.active { background: #14223a; border-color: #2c4770; }
+.program-open { width: 100%; text-align: left; border: 0; border-radius: 4px; background: transparent; color: var(--text-primary); padding: 9px 8px; cursor: pointer; display: flex; flex-direction: column; gap: 4px; font: 12px var(--font-sans); }
+.program-open:hover { background: var(--bg-surface-hover); }
+.program-filename { font: 10px var(--font-mono); color: #86addd; }
+.library-small-btn { border: 0; color: #93c5fd; background: transparent; cursor: pointer; font: 11px var(--font-sans); padding: 4px 0; }
+.program-row-actions { display: flex; gap: 14px; padding: 0 8px 7px; }
+.program-row-actions button:last-child { color: #f79a9a; }
+.library-owner-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; border-top: 1px solid var(--border-subtle); margin-top: 22px; padding-top: 16px; }
+.program-sidebar button:focus-visible, .program-sidebar input:focus-visible { outline: 2px solid #93c5fd; outline-offset: 2px; }
+.library-dialog { position: fixed; inset: 0; margin: auto; width: min(440px, calc(100vw - 32px)); max-height: calc(100dvh - 40px); overflow: auto; color: var(--text-primary); background: var(--bg-surface); border: 1px solid var(--border-strong); border-radius: var(--radius-lg); padding: 24px; box-shadow: 0 24px 80px #000a; }
+.library-dialog::backdrop { background: #000a; backdrop-filter: blur(5px); }
+.library-program-dialog { width: min(680px, calc(100vw - 32px)); }
+.library-form { display: flex; flex-direction: column; gap: 12px; }
+.library-form h2 { font-size: 17px; }
+.library-form p { color: var(--text-secondary); font-size: 12px; line-height: 1.7; }
+.library-form label { font-size: 12px; font-weight: 500; }
+.library-form input:not([type=file]), .library-form textarea { width: 100%; min-width: 0; background: var(--bg-main); border: 1px solid var(--border-strong); border-radius: 4px; padding: 10px; font: 13px var(--font-sans); color: var(--text-primary); }
+.library-form textarea { font: 12px/1.6 var(--font-mono); resize: vertical; tab-size: 4; }
+.library-form input:focus, .library-form textarea:focus { outline: 2px solid #629be5; outline-offset: 1px; }
+.library-form a { color: #93c5fd; }
+.library-close { font-size: 22px; color: var(--text-secondary); background: none; border: 0; cursor: pointer; }
+.library-import-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.library-form .library-message { color: #f7b3a2; min-height: 1.6em; }
+.library-form .library-danger { background: #a53030; border-color: #be4545; }
+.library-form button:disabled, .program-open:disabled { opacity: .5; cursor: wait; }
+@media (max-width: 860px) {
+  .main-content { grid-template-columns: 1fr; gap: 18px; }
+  .program-sidebar { padding: 14px; }
+  .program-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 6px; }
+  .library-owner-actions { flex-direction: row; flex-wrap: wrap; align-items: center; }
+  .library-section-label { margin-top: 16px; }
+}
