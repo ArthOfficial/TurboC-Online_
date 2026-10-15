@@ -53,7 +53,7 @@ async function until(check, timeout = 20000) {
   page.on('pageerror', error => errors.push(error.message));
   try {
     await page.goto(url);
-    await page.waitForFunction(() => document.querySelectorAll('#example-programs .program-open').length === 6);
+    await page.waitForFunction(() => document.querySelectorAll('#example-programs .program-open').length === 5);
     await page.locator('#start-btn').click();
     await page.waitForFunction(() => document.querySelector('#status-dot').classList.contains('online'), null, { timeout: 60000 });
     assert.equal(await page.evaluate(() => TurboWorkspace.filename), 'MAIN.CPP');
@@ -91,7 +91,7 @@ async function until(check, timeout = 20000) {
     await page.locator('#new-program-form button[type=submit]').click();
     await page.waitForFunction(() => window.TurboWorkspace.filename === 'NEWFILE.CPP');
     await page.locator('#new-program-dialog').waitFor({ state: 'hidden' });
-    assert(await page.locator('[data-program-id="working-NEWFILE.CPP"]').isVisible());
+    assert.equal(await page.locator('#working-programs-section').count(), 0);
     assert.equal(await page.evaluate(() => document.activeElement.id), 'dos', 'A newly created file must be focused for immediate typing');
     const draft = await page.evaluate(() => TurboWorkspace.readFile('NEWFILE.CPP'));
     assert(draft.includes('int main()'));
@@ -105,9 +105,9 @@ async function until(check, timeout = 20000) {
     await page.waitForTimeout(200);
     const editedDraft = await page.evaluate(() => TurboWorkspace.readFile('NEWFILE.CPP'));
     assert(editedDraft.includes('savededit'));
-    await page.locator('[data-program-id="builtin-hello"]').click();
-    await page.waitForFunction(() => TurboWorkspace.filename === 'HELLO.CPP');
-    await page.locator('[data-program-id="working-NEWFILE.CPP"]').click();
+    await page.locator('[data-program-id="builtin-prime"]').click();
+    await page.waitForFunction(() => TurboWorkspace.filename === 'PRIME.CPP');
+    await page.evaluate(() => TurboWorkspace.openFile({ filename: 'NEWFILE.CPP', code: '' }));
     await page.waitForFunction(() => TurboWorkspace.filename === 'NEWFILE.CPP');
     assert.equal(await page.evaluate(() => TurboWorkspace.readFile('NEWFILE.CPP')), editedDraft, 'Switching away and reopening a working file must preserve the saved source');
 

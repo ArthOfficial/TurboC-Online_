@@ -8,14 +8,14 @@
     return result;
   };
   const allPrograms = () => [...state.examples, ...state.published, ...state.working];
-  const showError = (id, error) => { $(id).textContent = error.message; };
+  const showError = (id, error) => { $(id).textContent = error.message; $(id).hidden = false; };
   const openProgram = async (program, button) => {
     button.disabled = true;
     try {
       if (program.filename === 'MAIN.CPP' && state.published.some(item => item.id === program.id)) throw new Error('This program uses the blank startup filename. The publisher needs to rename MAIN.CPP before it can be opened.');
       const source = program.code !== undefined ? program : (await api('?id=' + encodeURIComponent(program.id))).program;
       await window.TurboWorkspace.openFile(source);
-      $('library-status').textContent = `Opened ${program.filename}. Press F2 to save your working copy.`;
+      $('library-status').textContent = ''; $('library-status').hidden = true;
     } catch (error) { showError('library-status', error); }
     finally { button.disabled = false; }
   };
@@ -33,14 +33,13 @@
     $(container).replaceChildren(...rows);
   }
   function render() {
-    renderList('example-programs', state.examples); renderList('saved-programs', state.published); renderList('working-programs', state.working);
-    $('example-count').textContent = state.examples.length; $('working-programs-section').hidden = !state.working.length;
+    renderList('example-programs', state.examples); renderList('saved-programs', state.published);
+    $('example-count').textContent = state.examples.length;
   }
   async function refresh() {
     try {
       const result = await api(); state.published = result.programs;
-      $('library-status').textContent = result.programs.length ? `${result.programs.length} published program${result.programs.length === 1 ? '' : 's'}.` : 'No published programs yet.';
-    } catch (error) { $('library-status').textContent = error.configured === false ? 'Built-in examples are ready to open.' : 'Saved programs are unavailable. Built-in examples still work.'; }
+    } catch (error) { if (error.configured !== false) showError('library-status', new Error('Saved programs are unavailable. Built-in examples still work.')); }
     render();
   }
   document.querySelectorAll('[data-close-dialog]').forEach(element => element.addEventListener('click', () => element.closest('dialog').close()));

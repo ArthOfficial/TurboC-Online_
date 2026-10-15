@@ -27,7 +27,7 @@ const { chromium } = require('playwright');
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
     page.on('dialog', dialog => dialog.accept());
     await page.goto(`http://127.0.0.1:${server.address().port}`);
-    await page.waitForFunction(() => document.querySelectorAll('#example-programs .program-open').length === 6);
+    await page.waitForFunction(() => document.querySelectorAll('#example-programs .program-open').length === 5);
     const before = await page.locator('.workspace-editor').boundingBox();
     await page.screenshot({ path: path.join(root, 'scratch/workspace-before-launch.png'), fullPage: true });
     await page.locator('#start-btn').click();

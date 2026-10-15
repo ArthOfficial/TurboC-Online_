@@ -110,7 +110,7 @@ Run `npm test` for server authorization and storage tests. With Playwright and i
 
 ## Program Library & Owner Setup
 
-The left panel contains six built-in programs. Everyone can open examples and published programs, and create temporary working files for their current emulator session. Only the owner can publish, edit, or delete cloud programs through the separate `/admin` page. Type that address manually; the public website has no admin links or owner controls, including for signed-in owners. On the admin page, give a program a display name and DOS filename, then write, paste, or upload its source. Built-ins are read-only library entries; publish an edited copy under a different DOS filename.
+The left panel contains five built-in programs. Everyone can open examples and published programs, and create temporary working files for their current emulator session. Only the owner can publish, edit, or delete cloud programs through the separate `/admin` page. Type that address manually; the public website has no admin links or owner controls, including for signed-in owners. On the admin page, give a program a display name and DOS filename, then write, paste, or upload its source. Built-ins are read-only library entries; publish an edited copy under a different DOS filename.
 
 Reopening a file from the sidebar keeps its existing working copy in Turbo C++, including saved edits. A published update does not overwrite work already open in the current session.
 
