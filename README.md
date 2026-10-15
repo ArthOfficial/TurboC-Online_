@@ -110,19 +110,21 @@ Run `npm test` for server authorization and storage tests. With Playwright and i
 
 ## Program Library & Owner Setup
 
-The left panel contains six built-in programs. Everyone can open examples and published programs, and create working files for their current emulator session. Only the owner can publish, edit, or delete cloud programs. To publish an edited DOS file, press **F2** in Turbo C++, then choose **Publish program → Read saved filename** and review the source before publishing. Built-ins are read-only library entries; publish an edited copy under a different DOS filename.
+The left panel contains six built-in programs. Everyone can open examples and published programs, and create temporary working files for their current emulator session. Only the owner can publish, edit, or delete cloud programs through the separate `/admin` page. Type that address manually; the public website has no admin links or owner controls, including for signed-in owners. On the admin page, give a program a display name and DOS filename, then write, paste, or upload its source. Built-ins are read-only library entries; publish an edited copy under a different DOS filename.
 
 Reopening a file from the sidebar keeps its existing working copy in Turbo C++, including saved edits. A published update does not overwrite work already open in the current session.
+
+`MAIN.CPP` is reserved for the blank startup file. If an older published program already uses that name, its source is preserved; rename its DOS filename in the admin editor to make it available in the workspace.
 
 The cloud library uses **private Vercel Blob file storage** and a Vercel Function. No database server or Google Drive connection is required. Reads through `/api/library` are public. Writes require a server-verified password and a signed HttpOnly session cookie. Failed sign-ins are limited to eight attempts per IP per 15 minutes with counters persisted in the private store.
 
 1. In the existing Vercel project, open **Storage → Create Database → Blob**, choose **Private**, and connect it to the project. Vercel provides `BLOB_READ_WRITE_TOKEN` as a server environment variable. See [Vercel's private storage guide](https://vercel.com/docs/vercel-blob/private-storage).
 2. Run `npm install`, then `npm run admin:password` in a local interactive terminal. Choose a password of at least 16 characters. Add the generated `ADMIN_PASSWORD_HASH` to the Vercel project's server environment variables for the desired deployments. Keep both environment variables private.
-3. Deploy the updated project on Vercel, then use **Owner sign in** on the website. Upload or paste source, publish it, edit it, or confirm deletion by name. No password or token needs to be pasted into chat or committed to Git.
+3. Deploy the updated project on Vercel, then open `/admin` manually and sign in. Upload or paste source, publish it, edit it, or confirm deletion by name. Wrong passwords show an inline error; missing configuration and service failures show their own messages. No password or token needs to be pasted into chat or committed to Git.
 
 Unconfigured static previews still have working built-in examples, new session files, and pasting; cloud publishing remains disabled. Blob storage is subject to the connected Vercel account's quotas and billing. There is no simulated cloud persistence fallback.
 
-The emulator starts with `FIBO.CPP` selected. Its startup overlay is `programs/starter-files.bin` (ZIP format). After changing `programs/examples.json` or `programs/startup.conf`, rebuild it with `python scripts/build-starter-files.py` and bump the service-worker cache version before deploying. The main `turboc.jsdos` archive remains unchanged.
+Launching the emulator opens an empty `MAIN.CPP`, focused and ready for typing. Examples open only when selected. Its startup overlay is `programs/starter-files.bin` (ZIP format). After changing `programs/examples.json` or `programs/startup.conf`, rebuild it with `python scripts/build-starter-files.py` and bump the service-worker cache version before deploying. The main `turboc.jsdos` archive remains unchanged.
 
 ## 📄 License & Credits
 

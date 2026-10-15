@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Program Admin · Turbo C++ Online</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/program-library.css">
+  <link rel="stylesheet" href="/admin.css">
+  <script src="/admin.js" defer></script>
+</head>
+<body>
+  <main class="admin-layout">
+    <header class="admin-header">
+      <div><p class="admin-eyebrow">ArthOfficial</p><h1>Program library</h1></div>
+      <a class="action-btn" href="/">Open Turbo C++ ↗</a>
+    </header>
+    <section id="owner-login-section" class="admin-login">
+      <form id="owner-form" class="library-form">
+        <div><h2>Owner sign in</h2><p>Manage the programs published on your website.</p></div>
+        <label for="owner-password">Password</label>
+        <input id="owner-password" type="password" autocomplete="current-password" required maxlength="1024" aria-describedby="owner-message">
+        <p id="owner-message" class="library-message" role="alert" aria-live="polite">Checking your session…</p>
+        <button type="submit" class="btn-primary" id="owner-submit">Sign in</button>
+      </form>
+    </section>
+    <section id="admin-workspace" hidden aria-label="Program management">
+      <div class="admin-toolbar">
+        <p id="admin-status" role="status"></p>
+        <div class="library-import-actions"><button type="button" id="btn-save-program" class="btn-primary">+ Publish program</button><button type="button" id="btn-owner-logout" class="action-btn">Sign out</button></div>
+      </div>
+      <div id="admin-programs" class="admin-programs"></div>
+    </section>
+  </main>
+  <dialog id="program-dialog" class="library-dialog library-program-dialog">
+    <form id="program-form" class="library-form">
+      <div class="library-dialog-heading"><h2 id="program-dialog-title">Publish program</h2><button type="button" data-close-dialog class="library-close" aria-label="Close program editor">×</button></div>
+      <p>Give your program a name, then write, paste, or upload the source code. Published programs are visible to everyone.</p>
+      <label for="program-title">Program name</label>
+      <input id="program-title" required maxlength="80" placeholder="e.g. Matrix multiplication">
+      <label for="program-filename">DOS filename</label>
+      <input id="program-filename" required maxlength="12" pattern="[A-Za-z0-9_]{1,8}\.(CPP|cpp|C|c|H|h|HPP|hpp)" value="PROGRAM.CPP" spellcheck="false">
+      <div class="library-import-actions"><button class="action-btn" type="button" id="btn-upload-program">Upload source file</button><input type="file" id="program-upload" accept=".cpp,.c,.h,.hpp" hidden></div>
+      <label for="program-code">Source code</label>
+      <textarea id="program-code" rows="14" spellcheck="false" required></textarea>
+      <p id="program-message" class="library-message" role="status"></p>
+      <button type="submit" class="btn-primary" id="program-submit">Publish program</button>
+    </form>
+  </dialog>
+  <dialog id="delete-program-dialog" class="library-dialog">
+    <form id="delete-program-form" class="library-form">
+      <h2>Delete published program?</h2>
+      <p id="delete-program-description"></p>
+      <p>This removes it from the website. Existing working copies in Turbo C++ stay open.</p>
+      <p id="delete-program-message" class="library-message" role="status"></p>
+      <div class="library-import-actions"><button type="button" data-close-dialog class="action-btn">Cancel</button><button type="submit" class="btn-primary library-danger">Delete program</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

@@ -459,12 +459,10 @@ void main() {
 }</div>
       </div>
       <div class="doc-card" id="cloud-library">
-        <h2>Program Library &amp; Owner Setup</h2>
-        <p>The Programs panel contains ready-to-run examples and programs published by ArthOfficial. Everyone can read them. Owner sign-in is required to publish, edit, or delete cloud programs. New working files belong to the current emulator session.</p>
-        <p>To publish a working file, press <strong>F2</strong> in Turbo C++, sign in as the owner, and choose <strong>Publish program → Read saved filename</strong>. Review the source and choose a unique DOS filename before publishing.</p>
-        <p><strong>1. Connect storage.</strong> In the Vercel project, open Storage, create a <strong>private Blob store</strong>, and connect it to the project. This supplies the server-only <code>BLOB_READ_WRITE_TOKEN</code>.</p>
-        <p><strong>2. Set your password.</strong> In the local project terminal, run <code>npm install</code> and <code>npm run admin:password</code>. Add its generated <code>ADMIN_PASSWORD_HASH</code> to the Vercel project's server environment variables. Keep the password, hash, and storage token private.</p>
-        <p><strong>3. Deploy.</strong> Deploy the updated project, then use Owner sign in. Built-in examples work before cloud storage is connected. Published files use Vercel Blob storage and its account quotas; no database server or Drive connection is needed.</p>
+        <h2>Program Library</h2>
+        <p>The Programs panel contains ready-to-run examples and programs published by ArthOfficial. Choose a program to open a working copy in Turbo C++.</p>
+        <p>Launching Turbo C++ opens an empty <code>MAIN.CPP</code> ready for typing. Choose <strong>New file</strong> to create another temporary file for this session, and press <strong>F2</strong> to save edits in the emulator.</p>
+        <p>Switching between files preserves their saved working copies. Your changes stay in the current emulator session and do not change the programs published on the website.</p>
       </div>
     </main>
   </div>

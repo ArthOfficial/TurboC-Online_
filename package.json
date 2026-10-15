@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "test": "node --test tests/library-api.test.cjs",
-    "test:browser": "node tests/editor-paste.cjs && node tests/library-browser.cjs",
+    "test:browser": "node tests/workspace-ui.cjs && node tests/editor-paste.cjs && node tests/library-browser.cjs",
     "admin:password": "node scripts/hash-password.cjs"
   },
   "engines": { "node": "22.x" },

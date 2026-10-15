@@ -1463,11 +1463,6 @@
           <h3 class="library-section-label">Working files · this session</h3>
           <div id="working-programs" class="program-list"></div>
         </section>
-        <div class="library-owner-actions">
-          <button type="button" class="action-btn" id="btn-owner-login">Owner sign in</button>
-          <button type="button" class="action-btn" id="btn-save-program" hidden>+ Publish program</button>
-          <button type="button" class="library-small-btn" id="btn-owner-logout" hidden>Sign out</button>
-        </div>
       </aside>
       <div class="workspace-editor">
       <!-- Launch Dropzone Card Section -->
@@ -1603,6 +1598,7 @@ int main() {
           </div>
         </div>
 
+      </section>
         <!-- Emulator Key Reference Bar -->
         <div class="emulator-statusbar">
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
@@ -1617,7 +1613,6 @@ int main() {
             Tip: Click inside your file and press <code style="background: var(--bg-surface-elevated); padding: 2px 5px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: var(--text-primary); font-family: var(--font-mono);">Ctrl+V</code> to paste at the cursor. Use Paste Code to load a file.
           </div>
         </div>
-      </section>
       </div>
     </main>
   </div>
@@ -1625,45 +1620,10 @@ int main() {
   <!-- Hidden Native File Input for Import -->
   <input type="file" id="file-importer" accept=".cpp,.c,.cc,.cxx,.h,.hpp,.txt" style="display: none;">
 
-  <dialog id="owner-dialog" class="library-dialog">
-    <form id="owner-form" class="library-form">
-      <div class="library-dialog-heading"><h2>Owner sign in</h2><button type="button" data-close-dialog class="library-close" aria-label="Close owner sign in">×</button></div>
-      <p>Only ArthOfficial can publish, edit, or delete programs. Everyone can open them.</p>
-      <label for="owner-password">Owner password</label>
-      <input id="owner-password" type="password" autocomplete="current-password" required maxlength="1024">
-      <p id="owner-message" class="library-message" role="status"></p>
-      <p><a href="docs.html#cloud-library">Cloud library setup guide</a></p>
-      <button type="submit" class="btn-primary" id="owner-submit">Sign in</button>
-    </form>
-  </dialog>
-  <dialog id="program-dialog" class="library-dialog library-program-dialog">
-    <form id="program-form" class="library-form">
-      <div class="library-dialog-heading"><h2 id="program-dialog-title">Publish program</h2><button type="button" data-close-dialog class="library-close" aria-label="Close program editor">×</button></div>
-      <p>Published programs are visible to everyone. Save changes in Turbo C++ with F2 before reading a file here.</p>
-      <label for="program-title">Program name</label>
-      <input id="program-title" required maxlength="80" placeholder="e.g. Matrix multiplication">
-      <label for="program-filename">DOS filename</label>
-      <input id="program-filename" required maxlength="12" pattern="[A-Za-z0-9_]{1,8}\.(CPP|cpp|C|c|H|h|HPP|hpp)" value="PROGRAM.CPP" spellcheck="false">
-      <div class="library-import-actions"><button type="button" class="action-btn" id="btn-read-dos-file">Read saved Turbo C++ file</button><label class="action-btn" for="program-upload">Upload source file</label><input type="file" id="program-upload" accept=".cpp,.c,.h,.hpp" hidden></div>
-      <label for="program-code">Source code</label>
-      <textarea id="program-code" rows="14" spellcheck="false" required></textarea>
-      <p id="program-message" class="library-message" role="status"></p>
-      <button type="submit" class="btn-primary" id="program-submit">Publish program</button>
-    </form>
-  </dialog>
-  <dialog id="delete-program-dialog" class="library-dialog">
-    <form id="delete-program-form" class="library-form">
-      <h2>Delete published program?</h2>
-      <p id="delete-program-description"></p>
-      <p>This removes it from the website. Existing working copies in Turbo C++ stay open.</p>
-      <p id="delete-program-message" class="library-message" role="status"></p>
-      <div class="library-import-actions"><button type="button" data-close-dialog class="btn-secondary">Cancel</button><button type="submit" class="btn-primary library-danger">Delete program</button></div>
-    </form>
-  </dialog>
   <dialog id="new-program-dialog" class="library-dialog">
     <form id="new-program-form" class="library-form">
       <div class="library-dialog-heading"><h2>New working file</h2><button type="button" data-close-dialog class="library-close" aria-label="Close new file">×</button></div>
-      <p>Create a file for this session. Publishing to the website is available to the owner.</p>
+      <p>Create a temporary file for this session.</p>
       <label for="new-program-filename">DOS filename</label>
       <input id="new-program-filename" required maxlength="12" pattern="[A-Za-z0-9_]{1,8}\.(CPP|cpp|C|c)" value="NEW.CPP" spellcheck="false">
       <p id="new-program-message" class="library-message" role="status"></p>
@@ -1759,7 +1719,7 @@ int main() {
   let toastTimer = null;
   let editorPasteInProgress = false;
   let bootPromise = null;
-  let activeFilename = "FIBO.CPP";
+  let activeFilename = "MAIN.CPP";
 
   // DOS Key Constants
   const KBD = {
@@ -2055,8 +2015,9 @@ int main() {
               await waitForInitialEditor();
               await pressDosKey(KBD.ESC, false, 25, 100);
               dosBox.inert = false;
+              dosBox.focus({ preventScroll: true });
               updateStatus("online", "Turbo C++ 3.2 Online");
-              showToast("Fibonacci is ready. Choose any program on the left.", "success", "Turbo C++ Ready", 4000);
+              showToast("MAIN.CPP is ready. Start typing or choose a program on the left.", "success", "Turbo C++ Ready", 4000);
               finishBoot(dosCi);
               window.dispatchEvent(new CustomEvent("turbo-file-opened", { detail: { filename: activeFilename } }));
             } catch (error) {

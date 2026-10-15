@@ -1,6 +1,6 @@
 // service-worker.js
 
-const CACHE_NAME = "turboc-cache-v12";
+const CACHE_NAME = "turboc-cache-v13";
 
 const FILES_TO_CACHE = [
   "./",
@@ -71,7 +71,8 @@ self.addEventListener("activate", event => {
 // Fetch
 // =========================
 self.addEventListener("fetch", event => {
-  if (new URL(event.request.url).pathname.startsWith("/api/")) return;
+  const pathname = new URL(event.request.url).pathname;
+  if (pathname.startsWith("/api/") || pathname === "/admin" || pathname === "/admin.html") return;
   if (event.request.method !== "GET") return;
 
   // HTML Navigation (Same-Origin Only)

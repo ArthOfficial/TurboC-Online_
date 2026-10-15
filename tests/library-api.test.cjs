@@ -51,6 +51,7 @@ test('public reads, owner sessions, safe upload, versioned edit, and deletion', 
   const program = { title: 'Fibonacci custom', filename: 'CUSTOM.CPP', code: 'int main() { return 0; }' };
   assert.equal((await request(handler, 'PUT', { ...program, filename: '../TC.EXE' }, { cookie })).status, 400);
   assert.equal((await request(handler, 'PUT', { ...program, filename: 'CON.CPP' }, { cookie })).status, 400);
+  assert.equal((await request(handler, 'PUT', { ...program, filename: 'MAIN.CPP' }, { cookie })).status, 400, 'The blank startup file must not collide with published programs');
   const created = await request(handler, 'PUT', program, { cookie });
   assert.equal(created.status, 201);
   const id = created.result.program.id;
@@ -65,6 +66,13 @@ test('public reads, owner sessions, safe upload, versioned edit, and deletion', 
   assert.equal((await request(handler, 'DELETE', { id, revision: updated.result.program.revision }, { cookie })).status, 200);
   assert.equal((await request(handler, 'GET', null, { id })).status, 404);
   assert.equal((await request(handler, 'GET')).result.programs.length, 0);
+  const legacy = { ...program, id, filename: 'MAIN.CPP' };
+  await store.put('programs/' + id + '.json', JSON.stringify(legacy), { allowOverwrite: false });
+  const legacySource = (await request(handler, 'GET', null, { id })).result.program;
+  assert.equal(legacySource.code, program.code, 'Existing colliding programs must retain their stored source');
+  const renamed = await request(handler, 'PUT', { ...legacySource, filename: 'LEGACY.CPP' }, { cookie });
+  assert.equal(renamed.status, 200, 'An owner can repair a legacy startup filename collision by renaming it');
+  assert.equal((await request(handler, 'GET', null, { id })).result.program.code, program.code);
 });
 
 test('durable login throttling survives a new function instance and missing configuration fails closed', async () => {
