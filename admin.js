@@ -20,7 +20,7 @@
         interruptedDialog = document.querySelector('dialog[open]')?.id || null;
         setSignedIn(false); $('owner-message').textContent = 'Your session expired. Sign in again; your draft is kept.';
       }
-      const message = result.configured === false ? 'Owner sign-in is not configured. Check BLOB_READ_WRITE_TOKEN and ADMIN_PASSWORD_HASH in Vercel, then redeploy.' : result.error || 'The request failed.';
+      const message = result.error || 'The request failed.';
       throw Object.assign(new Error(message), { status: response.status });
     }
     return result;

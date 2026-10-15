@@ -85,6 +85,28 @@ test('durable login throttling survives a new function instance and missing conf
   assert.equal(disabled.result.configured, false);
 });
 
+test('prefixed Vercel Blob token authenticates all storage operations', async () => {
+  const store = memoryBlobs();
+  const password = 'prefixed-storage-test-password';
+  for (const method of ['get', 'list', 'put', 'del']) {
+    const original = store[method];
+    store[method] = async (...args) => {
+      const options = method === 'list' ? args[0] : method === 'put' ? args[2] : args[1];
+      assert.equal(options.token, 'prefixed-test-only', `${method} must receive the configured prefixed token`);
+      return original(...args);
+    };
+  }
+  const handler = createApi(store, { ADMIN_PASSWORD_HASH: await hashPassword(password), TURBOC_READ_WRITE_TOKEN: 'prefixed-test-only' });
+  assert.equal((await request(handler, 'GET')).status, 200, 'An empty store with a prefixed token must be configured');
+  const login = await request(handler, 'POST', { password }, { action: 'login' });
+  assert.equal(login.status, 200);
+  const cookie = login.headers['set-cookie'].split(';')[0];
+  const created = await request(handler, 'PUT', { title: 'Prefixed store', filename: 'PREFIX.CPP', code: 'int main() {}' }, { cookie });
+  assert.equal(created.status, 201);
+  assert.equal((await request(handler, 'GET', null, { id: created.result.program.id })).status, 200);
+  assert.equal((await request(handler, 'DELETE', created.result.program, { cookie })).status, 200);
+});
+
 test('malformed cookies are guests, password changes invalidate sessions, and logout clears the cookie', async () => {
   const store = memoryBlobs();
   const password = 'third-long-test-password';

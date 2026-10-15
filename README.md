@@ -119,6 +119,7 @@ Reopening a file from the sidebar keeps its existing working copy in Turbo C++, 
 The cloud library uses **private Vercel Blob file storage** and a Vercel Function. No database server or Google Drive connection is required. Reads through `/api/library` are public. Writes require a server-verified password and a signed HttpOnly session cookie. Failed sign-ins are limited to eight attempts per IP per 15 minutes with counters persisted in the private store.
 
 1. In the existing Vercel project, open **Storage → Create Database → Blob**, choose **Private**, and connect it to the project. Vercel provides `BLOB_READ_WRITE_TOKEN` as a server environment variable. See [Vercel's private storage guide](https://vercel.com/docs/vercel-blob/private-storage).
+   Connections using the `TURBOC` prefix provide `TURBOC_READ_WRITE_TOKEN` instead; the server accepts either name. An empty store works before the first program is uploaded.
 2. Run `npm install`, then `npm run admin:password` in a local interactive terminal. Choose a password of at least 16 characters. Add the generated `ADMIN_PASSWORD_HASH` to the Vercel project's server environment variables for the desired deployments. Keep both environment variables private.
 3. Deploy the updated project on Vercel, then open `/admin` manually and sign in. Upload or paste source, publish it, edit it, or confirm deletion by name. Wrong passwords show an inline error; missing configuration and service failures show their own messages. No password or token needs to be pasted into chat or committed to Git.
 
